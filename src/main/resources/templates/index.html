@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+<title>웹 이미지 크롤러</title>
+
+<link href="/resource/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="/resource/custom/js/common.js"></script>
+<script src="/resource/custom/js/main.js"></script>
+</head>
+<body>
+	<div class="container">
+	
+		<h2 class="form-signin-heading">이미지 크롤러</h2>
+		<div class="row align-items-center">
+			<div class="col col-sm-4"></div>
+			<div class="col col-sm-4">
+				<form class="form-signin" id="UrlCheckForm" name="UrlCheckForm" onsubmit="return false;">
+					
+					<label>대상 주소</label>
+					<input type="text" name="url" id="url" class="form-control" onkeydown="if (event.keyCode == 13) { goUrlCheck(); };" placeholder="http:// or https://" required autofocus>
+					<br/>
+					<button class="btn btn-lg btn-primary btn-block" type="button" id="runBtn" onclick="goUrlCheck();">시작</button>
+					<button class="btn btn-lg btn-default btn-block" type="button" id="initBtn" onclick="goInit();">초기화</button>
+					<br/>
+					<div id="progressViewDiv" class="row" style="display:none;">
+						<div class="progress">
+						  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" id="progressPerViewDiv">
+						  </div>
+						</div>
+					</div>
+					<div id="urlDataViewDiv">
+						상태코드 : <span id="stsCdViewSpan"></span><br/>
+						응답시간 : <span id="checkTimeViewSpan"></span><br/>
+						시작시간 : <span id="startTimeViewSpan"></span><br/>
+						종료시간 : <span id="endTimeViewSpan"></span>
+					</div>
+				</form>
+			</div>
+		</div>
+		<br/>
+
+		<div class="row" style="display:none;" id="imageListViewDiv">
+			<div class="col">
+				<table class="table table-hover">
+				<thead>
+				<tr>
+				  <th width="5%">#</th>
+				  <th width="auto">URL</th>
+				  <th width="8%">File Name</th>
+				  <th width="7%">상태<br/>코드</th>
+				  <th width="10%">응답<br/>시간</th>
+				  <th width="10%">Size</th>
+				  <th width="10%">완료시간</th>
+				  <th width="20%">결과</th>
+				</tr>
+				</thead>
+				<tbody id="imageRowViewTbody">
+				</tbody>
+				</table>
+			</div>
+		</div>
+    </div>
+</body>
+</html>
